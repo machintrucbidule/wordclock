@@ -1,0 +1,53 @@
+{
+	"hostname":"horlogetest",
+	"timezone":"1",
+	"dst":"0",
+	"ntp_server":"europe.pool.ntp.org",
+	"colors":{
+		"hourmin_mode":"1",
+		"_comment_hourmin_mode": "//0 for default unique colors, 1 for dynamic colors changing relatively of the hour position on a clock",
+		"seconds_mode":"2",
+		"_comment_seconds_mode": "//0 for default unique colors, 1 for dynamic colors changing relatively of the second's position on a clock, 2 for unique color on each seconds depending of its position",
+		"seconds_display":"all",
+		"_comment_seconds_display": "//'past' will display all past seconds, 'one' will only display current one, 'all' will display all seconds except current one",
+		"hours_on":{
+			"r":"255",
+			"g":"0",
+			"b":"0"
+		},
+		"minutes_on":{
+			"r":"0",
+			"g":"0",
+			"b":"255"
+		},
+		"seconds_on":{
+			"r":"0",
+			"g":"255",
+			"b":"0"
+		},
+		"back":{
+			"r":"255",
+			"g":"255",
+			"b":"255"
+		},
+		"saturation":"255",
+		"offset":"270"
+	},
+	"brightness":{
+		"night":{
+			"hours":"40",
+			"seconds":"0",
+			"back":"0"
+		},
+		"day":{
+			"hours":"255",
+			"seconds":"180",
+			"back":"50"
+		},
+		"threshold":"8"
+	},
+	"restart":{
+		"day":"0",
+		"hour":"3"
+	}
+}
