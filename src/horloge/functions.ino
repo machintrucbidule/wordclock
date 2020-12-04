@@ -213,7 +213,7 @@ void showRing(int r, int g, int b){
   pixels.show();
 }
 
-//Get a text containing a number, and returns a text with a number between 0 and 255
+//Get a text containing a number, and returns a text with a number between 0 and maxi
 String byteLimit(String number, int maxi=255){
   int val = atoi(number.c_str());
 

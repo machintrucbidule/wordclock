@@ -71,7 +71,7 @@ void setup() {
   //Initialization, we display a blue ring
   Serial.println("Display blue ring while initialization");
   showRing(0,0,255);  //Not working on cold start, but works if reboot. Tried to add a 2s delay to let time to led array to initialize, but doesn't change anything...
-  showRing(0,0,255);
+  showRing(0,0,255);  // ... but with a second one, it seems to be working...
 
   //Mounting file system to manage configuration file
   Serial.println("Mounting file system");

@@ -1,15 +1,24 @@
 # Wordclock
 Word clock for an ESP8266 with a ws2812b led matrix and a temt6000 light sensor
 
+### [1. Quick description](#1-quick-description)  
+### [2. 3D Prints](#2-3d-prints)  
+### [3. Installation](#3-installation)  
+### [4. Configuration](#4-configuration)  
+### [5. Wiring](#5-wiring)  
+### [6. Usage](#6-usage)  
+### [7. Files](#7-files)  
+### [8. Parts links](#8-parts-links)  
+
 ## 1. Quick description
 The aim of this project is to display a word clock on a ws2812b led matrix and a TEM6000 luminosity sensor, pluged on an ESP8266.  
 At the moment that's only available for a french word clock, but it could be updated to make an english one too. Letters placement is already available in the english_matrix.txt file, then the whole code would need to be updated in order to :  
 - Turn on correct leds for other languages (ledarrays.ino and functions.ino)  
-- Display the configuration page on other languages (data/index.html for most of the code, and also some texts in webserver.ino)  
+- Display the configuration page on other languages (data/index.html for most of the text, and also one line in french in webserver.ino)  
 
 ## 2. 3D Prints
-Thingiverse project with 3D prints parts designed for this project: xxx
-Even if code has been designed for above thingiverse project, it could be used with any other construction, as soon as it uses an ESP8266, a WS2812B 16x16 led matrix, and a TEMT6000 light sensor.
+Thingiverse project with 3D prints parts designed for this project: xxx  
+Even if code has been designed for above thingiverse project, it could be used with any other hardware (other 3D model, wood, metal, etc...), as soon as it uses an ESP8266, a 16x16 led matrix compatible with the Adafruit NeoPixel library, and a TEMT6000 light sensor.  
   
 ## 3. Installation
 This code is intented to be compiled using Arduino IDE: https://www.arduino.cc/en/software  
@@ -24,8 +33,8 @@ Go to Sketch > Include Library > Manage Libraries, then install following librar
 - StringSplitter  
 - WifiManager  
   
-From here project should compile without error.  
-To upload it on the ESP8266, connect the ESP8266 on your computer (don't forget to install serial/usb chipset driver before, it should be provided with ESPs), select the right COM PORT from the Tools menu, then choose Sketch > Upload - you'll have to recompile/upload each time you update the code  
+From now project should compile without error.  
+To upload it on the ESP8266, connect the ESP8266 on your computer (don't forget to install serial/usb chipset driver before, it should be provided with ESPs - most of them are using CH340 chipset : http://www.wch-ic.com/search?q=ch340&t=downloads), select the right COM PORT from the Tools menu, then choose Sketch > Upload - you'll have to recompile/upload each time you update the code.  
 Then upload files to be copied on the flash memory by launching Tools > ESP8266 LittleFS Data Upload (serial monitor needs to be closed) - no need to repeat this step after each upload of the code, only first time and if you update files to be copied on the flash memory (all files contained in the "data" folder)  
 Reopen serial monitor, some data should display (wifi connection status, etc...)  
   
@@ -63,7 +72,7 @@ On the configuration page, everything is in french ... but time is also displaye
 
 ## 7. Files
 Description of the project's files:  
-- horloge.ino   => main file, contains includes, defines, and the 2 setup (ran once on startup) and loop (ran 10 times/s)  
+- horloge.ino   => main file, contains includes, defines, and the 2 following arduino functions: setup (ran once on startup) and loop (ran 10 times/s)  
 - config.ino    => functions used to mange configuration file (config.json)  
 - functions.ino => several functions, and especially the main where leds are turned on/off, with the right colors  
 - ledarrays.ino => arrays to do the mapping between words and leds ids  
@@ -78,4 +87,11 @@ Description of the project's files:
 		- horloge.js => javascript for configuration page  
 		- jquery.ui.touch-punch.js => to handle touch events from a smartphone  
 		- all other js aren't used, but could be one day if CDN hosting other js (jquery, etc...) aren't working anymore.  
-- favicon.ico 	=> just an icon for the webpage, can be usefull if a shortcut to the config page is added on smartphone launcher
+- favicon.ico 	=> just an icon for the webpage, can be usefull if a shortcut to the config page is added on smartphone launcher  
+  
+## 8. Parts links
+Links to the parts I used (links might not work anymore):  
+- ESP8266: https://fr.aliexpress.com/item/4001295464144.html?spm=a2g0s.9042311.0.0.28556c37za4rUh  
+- WS2812B (WS2812B Eco variant, 16x16): https://fr.aliexpress.com/item/32390846029.html?spm=a2g0s.9042311.0.0.28556c37za4rUh  
+- TEMT6000: https://fr.aliexpress.com/item/1005001636682063.html?spm=a2g0s.9042311.0.0.28556c37za4rUh  
+- Power source (8A variant, but oversized knowing that all leds won't be turned on at their max level in the same time): https://fr.aliexpress.com/item/33014935336.html?spm=a2g0s.9042311.0.0.28556c37za4rUh  
