@@ -1,14 +1,14 @@
 # Wordclock
 Word clock for an ESP8266 with a ws2812b led matrix and a temt6000 light sensor
 
-### [1. Quick description](#1-quick-description)  
-### [2. 3D Prints](#2-3d-prints)  
-### [3. Installation](#3-installation)  
-### [4. Configuration](#4-configuration)  
-### [5. Wiring](#5-wiring)  
-### [6. Usage](#6-usage)  
-### [7. Files](#7-files)  
-### [8. Parts links](#8-parts-links)  
+[1. Quick description](#1-quick-description)  
+[2. 3D Prints](#2-3d-prints)  
+[3. Installation](#3-installation)  
+[4. Configuration](#4-configuration)  
+[5. Wiring](#5-wiring)  
+[6. Usage](#6-usage)  
+[7. Files](#7-files)  
+[8. Parts links](#8-parts-links)  
 
 ## 1. Quick description
 The aim of this project is to display a word clock on a ws2812b led matrix and a TEM6000 luminosity sensor, pluged on an ESP8266.  
