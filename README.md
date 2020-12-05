@@ -1,6 +1,6 @@
 # Wordclock
 Word clock for an ESP8266 with a ws2812b led matrix and a temt6000 light sensor
-
+  
 [1. Quick description](#1-quick-description)  
 [2. 3D Prints](#2-3d-prints)  
 [3. Installation](#3-installation)  
@@ -9,15 +9,18 @@ Word clock for an ESP8266 with a ws2812b led matrix and a temt6000 light sensor
 [6. Usage](#6-usage)  
 [7. Files](#7-files)  
 [8. Parts links](#8-parts-links)  
-
+  
 ## 1. Quick description
 The aim of this project is to display a word clock on a ws2812b led matrix and a TEM6000 luminosity sensor, pluged on an ESP8266.  
+  
+![Wordclock](https://github.com/icalmels/wordclock/blob/master/Photos/20201205_143304.jpg?raw=true)
+  
 At the moment that's only available for a french word clock, but it could be updated to make an english one too. Letters placement is already available in the english_matrix.txt file, then the whole code would need to be updated in order to :  
 - Turn on correct leds for other languages (ledarrays.ino and functions.ino)  
 - Display the configuration page on other languages (data/index.html for most of the text, and also one line in french in webserver.ino)  
 
 ## 2. 3D Prints
-Thingiverse project with 3D prints parts designed for this project: xxx  
+Thingiverse project with 3D prints parts designed for this project: https://www.thingiverse.com/thing:4675585  
 Even if code has been designed for above thingiverse project, it could be used with any other hardware (other 3D model, wood, metal, etc...), as soon as it uses an ESP8266, a 16x16 led matrix compatible with the Adafruit NeoPixel library, and a TEMT6000 light sensor.  
   
 ## 3. Installation
@@ -54,7 +57,8 @@ Easiest way (less solders) to connect everything (esp8266, led matrix and temt60
 	- VCC => to the "3v" ESP8266 Pin  
 	- GND => to the last led matrix ground pinout (top one)  
 	- SIG => to the pin used for luminosity sensor on the ESP8266 (A0 by default)  
-  
+![Wordclock](https://github.com/icalmels/wordclock/blob/master/Photos/20201205_142826.jpg?raw=true)
+	
 ## 6. Usage
 Once everything is installed and wired, plug in the power source (can be powered using esp8266 usb port, but depending of the luminosity, if too much current is drained, esp can crash)  
 It should display:  
