@@ -13,7 +13,7 @@ Word clock for an ESP8266 with a ws2812b led matrix and a temt6000 light sensor
 ## 1. Quick description
 The aim of this project is to display a word clock on a ws2812b led matrix and a TEMT6000 luminosity sensor, pluged on an ESP8266.  
   
-![Wordclock](https://github.com/icalmels/wordclock/blob/master/Photos/20201205_143304.jpg?raw=true)
+![Wordclock](https://github.com/icalmels/wordclock/blob/master/Photos/20201205_143209.jpg?raw=true)
   
 At the moment that's only available for a french word clock, but it could be updated to make an english one too. Letters placement is already available in the english_matrix.txt file, then the whole code would need to be updated in order to :  
 - Turn on correct leds for other languages (ledarrays.ino and functions.ino)  
