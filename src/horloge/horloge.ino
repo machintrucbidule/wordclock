@@ -150,7 +150,7 @@ void setup() {
 //Main function, ran on each cycle (with a 100ms delay at the end, so 10 times/sec)
 void loop() {
   // put your main code here, to run repeatedly:
-  Serial.println("main loop");
+  //Serial.println("main loop");
   
   //Manages request sent to webserver
   server->handleClient();

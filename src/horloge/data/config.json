@@ -1,5 +1,5 @@
 {
-	"hostname":"horlogetest",
+	"hostname":"horloge",
 	"timezone":"1",
 	"dst":"0",
 	"ntp_server":"europe.pool.ntp.org",
