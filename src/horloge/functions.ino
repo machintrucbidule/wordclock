@@ -56,7 +56,7 @@ void showTime(){  //Oh yeah!
   );
   uint32_t color_s = pixels.gamma32(
                    ((int)(docConfig["colors"]["seconds_on"]["r"].as<int>()*per_lum_seconds) << 16) 
-                   + ((int)(docConfig["colors"]["seconds_ons_on"]["g"].as<int>()*per_lum_seconds) << 8) 
+                   + ((int)(docConfig["colors"]["seconds_on"]["g"].as<int>()*per_lum_seconds) << 8) 
                    + (int)(docConfig["colors"]["seconds_on"]["b"].as<int>()*per_lum_seconds)
   );
 
@@ -248,4 +248,14 @@ String getFile(char* path){
   dataFile.close();
   
   return dat;
+}
+
+bool wasResetExpected(){
+  if( rebootReason == REASON_DEFAULT_RST
+   || rebootReason == REASON_SOFT_RESTART
+   || rebootReason == REASON_EXT_SYS_RST){
+    return true;
+  }
+
+  return false;
 }
