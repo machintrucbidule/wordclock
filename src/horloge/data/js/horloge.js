@@ -1,10 +1,10 @@
-$( document ).ready(function() {
+$(document).ready(function() {
 	
 	//Initiate calculated dropdown menus
 	initiateDropDowns();
 	
 	//Load json data
-	$.getJSON( "config.json", function( data ) {
+	$.getJSON("config.json", function(data){
 		fetchConfig(data);
 		
 		//Initiate components
@@ -14,6 +14,7 @@ $( document ).ready(function() {
 		showLoader(false);
 		
 		setInterval(updateLightLevel, 2000);
+		setInterval(updateRebootInfo, 2000);
 	});
 });
 
@@ -145,7 +146,15 @@ function initiateComponents(){
 	
 	$("#menu").accordion({
 	  header: "h1",
-	  heightStyle: "fill"
+	  heightStyle: "fill"/*,
+	  activate: function(event, ui) {
+		if(ui.newHeader[0]){
+			if( ui.newHeader[0].id =='menu_advanced'){
+				console.log("open advanced");
+				updateRebootInfo()
+			}
+		}
+	}*/
 	});
 	$(window).resize(function() {
 	// update accordion height
@@ -187,5 +196,17 @@ function updateLightLevel(){
 			});
 	}else{
 		console.log("light hidden");
+	}
+}
+
+function updateRebootInfo(){
+	if($("#lastrebootime").is(":visible")){
+		console.log("reboot info visible");
+			$.getJSON("getResetInfo.json", function(dataReboot){
+				$("#lastrebootime").html(dataReboot["time"]);
+				$("#lastrebootreason").html(dataReboot["reason"]);
+			});
+	}else{
+		console.log("reboot info hidden");
 	}
 }
