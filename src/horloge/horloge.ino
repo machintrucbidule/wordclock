@@ -49,11 +49,20 @@ std::map<String, std::vector<int>> ledsarray_seconds;
 int last_light_val=0;
 int light_val=0;
 
+//Last reboot reason
+uint32 rebootReason;
+
 //Ran once on startup
 void setup() {
   delay(1000);
   Serial.begin(115200);
   Serial.println();
+
+  //Get (re)boot reason
+  rst_info *resetInfo;
+  resetInfo = ESP.getResetInfoPtr();
+  rebootReason = resetInfo->reason;
+  Serial.println(rebootReason);
   
   pinMode(PIN_LUM, INPUT);                        //Initialize PIN input for light sensor
   WiFi.setPhyMode(WIFI_PHY_MODE_11B);             //Force WiFi B, lower bandwidth, but better range
@@ -70,8 +79,10 @@ void setup() {
   
   //Initialization, we display a blue ring
   Serial.println("Display blue ring while initialization");
-  showRing(0,0,255);  //Not working on cold start, but works if reboot. Tried to add a 2s delay to let time to led array to initialize, but doesn't change anything...
-  showRing(0,0,255);  // ... but with a second one, it seems to be working...
+  if(wasResetExpected()){
+    showRing(0,0,255);  //Not working on cold start, but works if reboot. Tried to add a 2s delay to let time to led array to initialize, but doesn't change anything...
+    showRing(0,0,255);  // ... but with a second one, it seems to be working...
+  }
 
   //Mounting file system to manage configuration file
   Serial.println("Mounting file system");
@@ -102,7 +113,9 @@ void setup() {
 
     //Wifi connected, green ring while to load data
     Serial.println("Display green ring");
-    showRing(0,255,0);
+    if(wasResetExpected()){
+      showRing(0,255,0);
+    }
 
     Serial.print("WiFi mode = ");
     Serial.println(WiFi.getPhyMode());
@@ -118,6 +131,7 @@ void setup() {
   //Dynamic pages
   server->on("/config", HTTP_POST, handleConfig);         //Handle to manage the configuration updates (target of the config form)
   server->on("/getLightLevel.json", handleGetLightLevel); //Handle page which returns current light level
+  server->on("/getResetInfo.json", handleGetResetInfo);   //Handle page which returns info about last reboot
   
   //Static files used as librairies
   server->serveStatic("/css/horloge.css", LittleFS, "/css/horloge.css");

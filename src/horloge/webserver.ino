@@ -179,3 +179,27 @@ void handleGetLightLevel(){
   String ret = "{\"average\":" + String(light_val) + ",\"last\":" + String(last_light_val) + "}";
   server->send(200, "application/json", ret);
 }
+
+void handleGetResetInfo(){
+  Serial.println("Sending info about last reboot");
+  String ret = "{\"reason\":\"";
+  switch(rebootReason){
+    case REASON_DEFAULT_RST : ret += "Normal startup by power on"; break;
+    case REASON_WDT_RST : ret += "Hardware watch dog reset"; break;
+    case REASON_EXCEPTION_RST : ret += "Exception reset"; break;
+    case REASON_SOFT_WDT_RST : ret += "Software watch dog reset"; break;
+    case REASON_SOFT_RESTART : ret += "Software restart"; break;
+    case REASON_DEEP_SLEEP_AWAKE : ret += "Wake up from deep-sleep"; break;
+    case REASON_EXT_SYS_RST : ret += "External system reset"; break;
+  }
+  ret += "\",\"time\":\"";
+
+  long seconds = millis() / 1000;
+  long minutes = seconds / 60;
+  long hours = minutes / 60;
+  long days = hours / 24;
+  ret += String(days) + String("j ") + String(hours % 24) + String("h ") + String(minutes % 60) + String("m ") + String(seconds % 60) + String("s"); 
+  
+  ret += "\"}";
+  server->send(200, "application/json", ret);
+}
