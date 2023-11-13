@@ -25,7 +25,7 @@
 		<input type='hidden' id='dynamic' name='dynamic' value='0'/>
 
 
-		<h1>G&eacute;n&eacute;ral</h1>
+		<h1 id="menu_general">G&eacute;n&eacute;ral</h1>
 		<div>
 			<h3>Fuseau horaire: 
 				<select name='timezone' id='timezone'></select>
@@ -40,7 +40,7 @@
 			<input type='submit' value='Valider'/><br/><br/>
 		</div>
 
-		<h1>Couleurs</h1>
+		<h1 id="menu_colors">Couleurs</h1>
 		<div>
 			<h3>
 				<fieldset><legend>Mode couleurs des heures/minutes:</legend>
@@ -110,7 +110,7 @@
 			<input type='submit' value='Valider'/><br/><br/>
 		</div>
 
-		<h1>Luminosit&eacute;</h1>
+		<h1 id="menu_luminosity">Luminosit&eacute;</h1>
 		<div>
 			<h2>Valeurs de luminosit&eacute;</h2>
 			<h3>
@@ -159,7 +159,7 @@
 			<input type='submit' value='Valider'/><br/><br/>
 		</div>
 
-		<h1>Avanc&eacute;</h1>
+		<h1 id="menu_advanced">Avanc&eacute;</h1>
 		<div>
 			<h3>
 				Hostname: <input type='text' id='hostname' name='hostname' value='' class='textbox'/>
@@ -197,6 +197,13 @@
 				<fieldset><legend>Config:</legend>
 					<input type='hidden' name='restoreconfig' id='restoreconfig' value='0'/>
 					<input type='button' value='Restaurer la config par d&eacute;faut' id='restoreconfigbtn'/>
+				</fieldset>
+			</h3>
+			
+			<h3>
+				<fieldset><legend>Dernier reboot:</legend>
+					<div>Il y a : <span id="lastrebootime"></span></div>
+					<div>Cause : <span id="lastrebootreason"></span></div>
 				</fieldset>
 			</h3>
 
